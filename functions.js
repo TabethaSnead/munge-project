@@ -1,24 +1,22 @@
-/*
-For this first set of functions, assume the input array looks like this:
+// For this first set of functions, assume the input array looks like this:
 
-const petsArray = [
-    { name: 'spot', type: 'dog' },
-    { name: 'rover', type: 'dog' },
-    { name: 'jumpy', type: 'frog' },
-    { name: 'einstein', type: 'cat' },
-];
+// const petsArray = [
+//     { name: 'spot', type: 'dog' },
+//     { name: 'rover', type: 'dog' },
+//     { name: 'jumpy', type: 'frog' },
+//     { name: 'einstein', type: 'cat' },
+// ];
 
+// OUTPUT:
+// [
+//     { name: 'spot', type: 'dog' },
+//     { name: 'rover', type: 'dog' },
 
-/*
-OUTPUT: 
-[
-    { name: 'spot', type: 'dog' },
-    { name: 'rover', type: 'dog' },
-
-]*/
+// ]
 
 export function getDogs(arr) {
-    return [];
+    const dogs = arr.filter((pet) => pet.type === 'dog');
+    return dogs;
 }
 
 /*
@@ -28,7 +26,8 @@ Output:
 */
 
 export function makeArrayOfNames(arr) {
-    return [];
+    const names = arr.map((pet) => pet.name);
+    return names;
 }
 
 /*
@@ -37,7 +36,9 @@ OUTPUT:
 */
 
 export function getNamesOfDogs(arr) {
-    return [];
+    const dogs = arr.filter((pet) => pet.type === 'dog');
+    const dognames = dogs.map((dogs) => dogs.name);
+    return dognames;
 }
 
 /*
@@ -47,7 +48,9 @@ Output:
 */
 
 export function makeReversedArrayOfTypes(arr) {
-    return [];
+    const type = arr.map((pet) => pet.type);
+    const reversed = type.reverse();
+    return reversed;
 }
 
 /*
@@ -62,7 +65,11 @@ Output:
 */
 
 export function makeSpanishLanguageArray(arr) {
-    return [];
+    const spanish = arr.map((pet) => {
+        const obj = { nombre: pet.name, tipo: pet.type };
+        return obj;
+    });
+    return spanish;
 }
 
 /*
@@ -76,7 +83,11 @@ Output:
 ]*/
 
 export function makeArrayWithIsHungry(arr) {
-     return []
+    const added = arr.map((pet) => {
+        const hungry = { name: pet.name, isHungry: true, type: pet.type };
+        return hungry;
+    });
+    return added;
 }
 
 /*
@@ -90,9 +101,15 @@ Output:
 ]*/
 
 export function makeShoutingArray(arr) {
-    return [];
+    const shout = arr.map((pet) => {
+        const name = pet.name.toUpperCase();
+        return {
+            ...pet,
+            name,
+        };
+    });
+    return shout;
 }
-
 
 /*
 
@@ -101,7 +118,12 @@ Output:
 */
 
 export function makeStringArray(arr) {
-    return [];
+    const joined = arr.map((pet) => {
+        const nametype = pet.name + pet.type;
+        return nametype;
+    });
+
+    return joined;
 }
 
 /*
@@ -114,7 +136,8 @@ OUTPUT:
 */
 
 export function findByName(name, arr) {
-    return {};
+    const first = arr.find((pet) => pet.name === name);
+    return first;
 }
 
 /*
@@ -140,7 +163,14 @@ Output:
 */
 
 export function makeArrayOfArraysOfArrays(arr) {
-    return [];
+    return arr.map((ar) => [
+        ['name', ar.name],
+        ['type', ar.type],
+    ]);
+    // const newArrName = arr.splice(arr.name);
+    // const newArrType = arr.splice(arr.type);
+    // const newArr = [newArrName + newArrType];
+    // return newArr;
 }
 
 ////////////////////////////////////////////////////////
@@ -169,7 +199,8 @@ Output:
 */
 
 export function getCars(arr) {
-    return [];
+    const car = arr.filter((vehicles) => vehicles.type === 'car');
+    return car;
 }
 
 /*
@@ -182,7 +213,9 @@ Output:
 */
 
 export function getChevyCars(arr) {
-    return [];
+    const chevy = arr.filter((vehicles) => vehicles.make === 'chevy');
+    const car = chevy.filter((vehicles) => vehicles.type === 'car');
+    return car;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -199,7 +232,9 @@ Output:
  */
 
 export function makeModelsStringWithReduce(arr) {
-    return '';
+    const model = arr.map((vehicles) => vehicles.model);
+    const string = model.reduce((acc, curr) => acc + curr);
+    return string;
 }
 
 /*
@@ -209,7 +244,9 @@ Output: 14
  */
 
 export function getSumOfAges(arr) {
-    return 0;
+    const sum = arr.map((vehicles) => vehicles.age);
+    const total = sum.reduce((acc, curr) => acc + curr);
+    return total;
 }
 
 /*
@@ -223,9 +260,24 @@ Output:
  */
 
 export function makeCountObject(arr) {
-    return {};
-}
+    let car = 0;
+    let van = 0;
+    let truck = 0;
 
+    const num = arr.forEach((item) => {
+        if (item.type === 'car') {
+            car++;
+        }
+        if (item.type === 'van') {
+            van++;
+        }
+        if (item.type === 'truck') {
+            truck++;
+        }
+    });
+    return { car: car, truck: truck, van: van };
+    //     return answer;
+}
 
 /*
 
@@ -233,7 +285,6 @@ Output:
 (order doesn't matter--but the string must include all keys for the first object in the array)
 'typemakemodelage'
  */
-
 
 export function makeKeysString(arr) {
     return '';
