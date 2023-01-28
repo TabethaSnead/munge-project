@@ -163,7 +163,14 @@ Output:
 */
 
 export function makeArrayOfArraysOfArrays(arr) {
-    return [];
+    return arr.map((ar) => [
+        ['name', ar.name],
+        ['type', ar.type],
+    ]);
+    // const newArrName = arr.splice(arr.name);
+    // const newArrType = arr.splice(arr.type);
+    // const newArr = [newArrName + newArrType];
+    // return newArr;
 }
 
 ////////////////////////////////////////////////////////
@@ -192,7 +199,8 @@ Output:
 */
 
 export function getCars(arr) {
-    return [];
+    const car = arr.filter((vehicles) => vehicles.type === 'car');
+    return car;
 }
 
 /*
@@ -205,7 +213,9 @@ Output:
 */
 
 export function getChevyCars(arr) {
-    return [];
+    const chevy = arr.filter((vehicles) => vehicles.make === 'chevy');
+    const car = chevy.filter((vehicles) => vehicles.type === 'car');
+    return car;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,7 +232,9 @@ Output:
  */
 
 export function makeModelsStringWithReduce(arr) {
-    return '';
+    const model = arr.map((vehicles) => vehicles.model);
+    const string = model.reduce((acc, curr) => acc + curr);
+    return string;
 }
 
 /*
@@ -232,7 +244,9 @@ Output: 14
  */
 
 export function getSumOfAges(arr) {
-    return 0;
+    const sum = arr.map((vehicles) => vehicles.age);
+    const total = sum.reduce((acc, curr) => acc + curr);
+    return total;
 }
 
 /*
@@ -246,7 +260,23 @@ Output:
  */
 
 export function makeCountObject(arr) {
-    return {};
+    let car = 0;
+    let van = 0;
+    let truck = 0;
+
+    const num = arr.forEach((item) => {
+        if (item.type === 'car') {
+            car++;
+        }
+        if (item.type === 'van') {
+            van++;
+        }
+        if (item.type === 'truck') {
+            truck++;
+        }
+    });
+    return { car: car, truck: truck, van: van };
+    //     return answer;
 }
 
 /*
